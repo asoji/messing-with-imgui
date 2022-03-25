@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+#Ignore all cmake-build-debug folder types like mingw, cygwin, and vside
+cmake-build-debug*
