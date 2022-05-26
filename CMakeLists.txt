@@ -4,16 +4,14 @@ project(messing-with-imgui LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/fonts/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/fonts/)
+
 #=================== GLFW ===================
 
 set(glfw3_DIR "libs/glfw")
 add_subdirectory(${glfw3_DIR})
 
 find_package(OpenGL REQUIRED)
-
-#=================== VULKAN ===================
-
-#add_subdirectory(libs/vulkan-headers)
 
 #=================== IMGUI ===================
 
@@ -41,7 +39,9 @@ target_include_directories( IMGUI
 
 add_executable(${PROJECT_NAME}
         "src/main.cpp"
-        "src/main.hpp")
+        "src/main.hpp"
+        "src/backend.cpp"
+        "src/backend.hpp")
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
         IMGUI
